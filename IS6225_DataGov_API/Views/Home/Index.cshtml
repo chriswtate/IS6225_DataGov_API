@@ -1,0 +1,40 @@
+﻿@model IS6225_DataGov_API.Models.Parks;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (IS6225_DataGov_API.Models.Park park in Model.data)
+{
+
+    string activityName = "";
+    for (int i = 0; i < park.activities.Length; i++)
+    {
+        IS6225_DataGov_API.Models.Activity name = park.activities[i];
+
+        activityName = name.name;
+    }
+
+    string opHours = "";
+    for (int i = 0; i < park.operatingHours.Length; i++)
+    {
+        IS6225_DataGov_API.Models.Operatinghour hours = park.operatingHours[i];
+
+        opHours = hours.description;
+    }
+
+    <p>
+        @(opHours)
+    </p>
+    <p>
+        @(park.fullName)
+    </p>
+    <p>
+        @(activityName)
+    </p>
+    <p>
+        ----------------------------------------------------------------------------
+    </p>
+}
